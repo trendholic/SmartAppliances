@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   Snowflake,
@@ -57,25 +58,36 @@ export default function CategoryGrid() {
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: i * 0.06 }}
                 whileHover={{ y: -6 }}
-                className="group relative overflow-hidden rounded-2xl border border-border bg-surface p-7"
+                className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-surface"
               >
-                <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-accent/10 blur-3xl transition-opacity group-hover:opacity-80" />
-                <div className="relative flex items-center justify-between">
-                  <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-accent/30 bg-accent/10 text-accent">
-                    <Icon size={20} />
-                  </span>
-                  <ArrowUpRight
-                    size={18}
-                    className="text-muted opacity-0 transition-opacity group-hover:opacity-100"
+                <div className="relative h-40 overflow-hidden">
+                  <Image
+                    src={cat.image}
+                    alt={cat.name}
+                    fill
+                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/10 to-transparent" />
+                  <span className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-lg border border-accent/30 bg-black/50 text-accent backdrop-blur">
+                    <Icon size={18} />
+                  </span>
                 </div>
-                <h3 className="relative mt-6 text-lg font-semibold">{cat.name}</h3>
-                <p className="relative mt-1 text-sm font-medium text-accent">
-                  {cat.tagline}
-                </p>
-                <p className="relative mt-3 text-sm leading-relaxed text-muted">
-                  {cat.description}
-                </p>
+                <div className="relative p-7 pt-5">
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-lg font-semibold">{cat.name}</h3>
+                    <ArrowUpRight
+                      size={18}
+                      className="text-muted opacity-0 transition-opacity group-hover:opacity-100"
+                    />
+                  </div>
+                  <p className="mt-1 text-sm font-medium text-accent">
+                    {cat.tagline}
+                  </p>
+                  <p className="mt-3 text-sm leading-relaxed text-muted">
+                    {cat.description}
+                  </p>
+                </div>
               </motion.a>
             );
           })}

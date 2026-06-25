@@ -4,6 +4,7 @@ export type Category = {
   tagline: string;
   icon: string;
   description: string;
+  image: string;
 };
 
 export type Product = {
@@ -18,6 +19,7 @@ export type Product = {
   features: string[];
   specs: Record<string, string>;
   accent: string;
+  image: string;
 };
 
 export const categories: Category[] = [
@@ -28,6 +30,7 @@ export const categories: Category[] = [
     icon: "snowflake",
     description:
       "AI-driven climate zones and internal cameras keep every shelf at the perfect temperature, while the Atlanteos app tells you what's inside before you open the door.",
+    image: "/images/refrigeration.png",
   },
   {
     slug: "induction-cooking",
@@ -36,6 +39,7 @@ export const categories: Category[] = [
     icon: "flame",
     description:
       "Magnetic induction zones that sense pan size automatically and respond to touch, voice, or app control in milliseconds.",
+    image: "/images/induction-cooking.png",
   },
   {
     slug: "built-in-ovens",
@@ -44,6 +48,7 @@ export const categories: Category[] = [
     icon: "oven",
     description:
       "Multi-sensor ovens that recognize your dish, auto-adjust humidity and convection, and notify you the instant it's perfectly done.",
+    image: "/images/built-in-ovens.png",
   },
   {
     slug: "range-hoods",
@@ -52,6 +57,7 @@ export const categories: Category[] = [
     icon: "wind",
     description:
       "Air-quality sensors trigger adaptive extraction speed automatically, with whisper-quiet brushless motors.",
+    image: "/images/range-hoods.png",
   },
   {
     slug: "dishwashers",
@@ -60,6 +66,7 @@ export const categories: Category[] = [
     icon: "droplets",
     description:
       "Turbidity sensors calculate exact water, time, and detergent needed per cycle — saving up to 40% water versus standard cycles.",
+    image: "/images/dishwashers.png",
   },
   {
     slug: "wine-beverage",
@@ -68,8 +75,13 @@ export const categories: Category[] = [
     icon: "wine",
     description:
       "Dual-zone vibration-free cooling with UV-filtered glass, tuned for long-term cellaring or quick-chill entertaining.",
+    image: "/images/wine-beverage.png",
   },
 ];
+
+function categoryImage(slug: string): string {
+  return categories.find((c) => c.slug === slug)?.image ?? "/images/refrigeration.png";
+}
 
 export const products: Product[] = [
   {
@@ -95,6 +107,7 @@ export const products: Product[] = [
       Warranty: "5-year smart systems warranty",
     },
     accent: "#3fd0c9",
+    image: categoryImage("refrigeration"),
   },
   {
     id: "atl-fridge-rs500",
@@ -119,6 +132,7 @@ export const products: Product[] = [
       Warranty: "5-year smart systems warranty",
     },
     accent: "#3fd0c9",
+    image: categoryImage("refrigeration"),
   },
   {
     id: "atl-induction-ic76",
@@ -143,6 +157,7 @@ export const products: Product[] = [
       Warranty: "3-year smart systems warranty",
     },
     accent: "#ff7849",
+    image: categoryImage("induction-cooking"),
   },
   {
     id: "atl-induction-ic48",
@@ -167,6 +182,7 @@ export const products: Product[] = [
       Warranty: "3-year smart systems warranty",
     },
     accent: "#ff7849",
+    image: categoryImage("induction-cooking"),
   },
   {
     id: "atl-oven-bo90",
@@ -191,6 +207,7 @@ export const products: Product[] = [
       Warranty: "5-year smart systems warranty",
     },
     accent: "#3fd0c9",
+    image: categoryImage("built-in-ovens"),
   },
   {
     id: "atl-oven-bo60",
@@ -215,6 +232,7 @@ export const products: Product[] = [
       Warranty: "4-year smart systems warranty",
     },
     accent: "#3fd0c9",
+    image: categoryImage("built-in-ovens"),
   },
   {
     id: "atl-hood-rh48",
@@ -239,6 +257,7 @@ export const products: Product[] = [
       Warranty: "3-year smart systems warranty",
     },
     accent: "#8a8fff",
+    image: categoryImage("range-hoods"),
   },
   {
     id: "atl-dish-dw24",
@@ -263,6 +282,7 @@ export const products: Product[] = [
       Warranty: "4-year smart systems warranty",
     },
     accent: "#3fd0c9",
+    image: categoryImage("dishwashers"),
   },
   {
     id: "atl-wine-wc48",
@@ -287,6 +307,7 @@ export const products: Product[] = [
       Warranty: "4-year smart systems warranty",
     },
     accent: "#c084fc",
+    image: categoryImage("wine-beverage"),
   },
 ];
 
