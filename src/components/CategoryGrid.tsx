@@ -11,7 +11,7 @@ import {
   Box,
   ArrowUpRight,
 } from "lucide-react";
-import { categories } from "@/data/products";
+import type { Category } from "@/lib/store";
 
 const icons: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
   snowflake: Snowflake,
@@ -22,7 +22,7 @@ const icons: Record<string, React.ComponentType<{ size?: number; className?: str
   wine: Wine,
 };
 
-export default function CategoryGrid() {
+export default function CategoryGrid({ categories }: { categories: Category[] }) {
   return (
     <section id="categories" className="relative py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">

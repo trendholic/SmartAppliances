@@ -2,15 +2,21 @@
 
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { categories, products } from "@/data/products";
+import type { Category, Product } from "@/lib/store";
 import ProductCard from "./ProductCard";
 
-export default function ProductShowcase() {
+export default function ProductShowcase({
+  categories,
+  products,
+}: {
+  categories: Category[];
+  products: Product[];
+}) {
   const [active, setActive] = useState<string>("all");
 
   const filtered = useMemo(
     () => (active === "all" ? products : products.filter((p) => p.categorySlug === active)),
-    [active]
+    [active, products]
   );
 
   return (

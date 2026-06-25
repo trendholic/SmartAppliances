@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, Zap } from "lucide-react";
-import type { Product } from "@/data/products";
+import type { Product } from "@/lib/store";
 
 export default function ProductCard({ product, index }: { product: Product; index: number }) {
   const [open, setOpen] = useState(false);
