@@ -5,7 +5,7 @@ export async function POST(req: NextRequest) {
   const body = await req.json().catch(() => null);
   const password = body?.password;
 
-  if (typeof password !== "string" || !checkPassword(password)) {
+  if (typeof password !== "string" || !(await checkPassword(password))) {
     return NextResponse.json({ error: "Incorrect password" }, { status: 401 });
   }
 
